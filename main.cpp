@@ -53,21 +53,34 @@ int main()
 
     FILE *source = fopen("tests.txt", "r");
 
-    char *text2 = (char *)calloc(MAX_LEN, sizeof(char));
-    char* save_text2 = text2;
+    char * buf = (char *)calloc(BIG_MAX_LEN, sizeof(char));
 
-    size_t str_len = 10;
+    char *text3[MAX_LEN] = {};
 
-    while (fgets(text2, str_len, source) )
+    int current = 0;
+
+
+    while (fgets(buf, MAX_LEN, source))
         {
-        text2 += str_len;
+        char *str = (char *)calloc(strlen(buf) + 1, sizeof(char));
+
+        text3[current] = strncpy(str, buf, MAX_LEN);
+        current++;
         }
 
-
-    for (char *j = save_text2; j < save_text2 + 100; j += str_len)
+    for (size_t i = 0; i < MAX_LEN; i++)
         {
-        my_puts(j);
+        if (text3[i] != NULL)
+            {
+            my_puts(text3[i]);
+            fflush(stdout);
+            }
         }
+    free(buf);
+
+
+
+
 
     return 0;
 

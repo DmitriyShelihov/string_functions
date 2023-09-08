@@ -3,7 +3,7 @@
 
 
 const size_t MAX_LEN = 100;
-
+const size_t BIG_MAX_LEN = 1000;
 int my_puts(const char *);
 
 
