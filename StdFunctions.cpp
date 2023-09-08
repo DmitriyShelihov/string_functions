@@ -4,6 +4,7 @@
 #include "StdFunctions.h"
 #include "set_colour.h"
 
+
 int my_puts(const char *source_string)
     {
     cooler_assert(source_string == NULL, NULL_ERROR, NULL_ERROR);
@@ -14,7 +15,6 @@ int my_puts(const char *source_string)
         ++source_string;
         }
 
-    putchar('\n');
 
     return NOT_ERROR;
     }
@@ -130,6 +130,25 @@ char *my_strdup(const char *str)
     return my_strncpy(dinamyc_str, str, str_len);
     }
 
+char *my_fgets (char *str, int limit_size, FILE *stream)
+    {
+    cooler_assert(str == NULL, NULL_ERROR, NULL);
+    cooler_assert(!isfinite(limit_size),NAN_ERROR, NULL );
+    cooler_assert(stream == NULL,  NULL_ERROR, NULL);
+    char symbol = NAN;
+    char* save_str = str;
+    while ((symbol = (char)fgetc(stream)) != '\n' && symbol != EOF && limit_size--)
+        {
+        *str = symbol;
+        str++;
+        }
+    if (!limit_size)
+        return NULL;
+    *str = '\0';
+
+    return save_str;
+    }
+
 void ascii(char symbol)
     {
     printf("%c имеет номер %d\n", symbol , symbol);
@@ -137,10 +156,12 @@ void ascii(char symbol)
 
 void print_data(const char* data, size_t rows, size_t cols)
     {
-    for (size_t i = 0; i < rows; i ++)
+    for (size_t lines = 0; lines < rows; lines ++)
         {
-        for (size_t j = 0; j < cols; j++)
-            printf("%c ", *(data + i*cols + j));
+        for (size_t  elem = 0; elem < cols; elem++)
+            {
+            printf("%c ", *(data + lines*cols + elem));
+            }
         printf("\n");
         }
 
@@ -148,17 +169,18 @@ void print_data(const char* data, size_t rows, size_t cols)
 
 void print_triangle_data(const char*data, size_t rows)
     {
-    for (size_t i = 0; i < rows; i++)        //номер ряда
+    for (size_t lines = 0; lines < rows; lines++)
         {
-        for (size_t j = 0; j <= i; j++)     //номер элемента в ряду
+        for (size_t elem = 0; elem <= lines; elem++)
             {
-            printf("%c ", *(data + j + ((i+1)*i)/2 ));
+            printf("%c ", *(data + elem + ((lines+1)*lines)/2 ));
 
             }
 
         printf("\n");
         }
     }
+
 
 
 

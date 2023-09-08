@@ -27,8 +27,9 @@ enum ERRORS
 \brief a define that checks a variable for an error.
 */
 
-#define CONDITIONAL_COMPILATION
-#ifdef CONDITIONAL_COMPILATION
+#define COOLER_ASSERT1
+#define COOLER_ASSERT
+#ifdef COOLER_ASSERT
 
     #define cooler_assert(condition, error_code, returned_value)                                                                              \
         if (condition)                                                                                                        \
@@ -40,9 +41,8 @@ enum ERRORS
             return returned_value;                                                                                                \
             }
 #else
-    #define cooler_assert(condition, error_code) \
-        ;                                        \
-#endif
+    #define cooler_assert(condition, error_code, returned_value) \
+        ;
 #endif
 
 

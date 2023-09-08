@@ -3,13 +3,14 @@
 \file
 \brief File with function that print information about assert
 */
+
 #include "assertion.h"
 #include "TXLib.h"
 #include "set_colour.h"
 #include <stdio.h>
 #include <assert.h>
 
-ERRORS call_errors(enum ERRORS errors)
+ERRORS call_errors(ERRORS errors)
     {
     cooler_assert(!isfinite(errors), NAN_ERROR, NAN_ERROR);
 
