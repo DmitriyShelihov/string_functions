@@ -64,7 +64,7 @@ int main()
         {
         char *str = (char *)calloc(strlen(buf) + 1, sizeof(char));
 
-        text3[current] = strncpy(str, buf, MAX_LEN);
+        text3[current] = strcpy(str, buf);
         current++;
         }
 
