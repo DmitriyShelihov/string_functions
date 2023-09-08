@@ -53,17 +53,20 @@ int main()
 
     FILE *source = fopen("tests.txt", "r");
 
-    char text1[MAX_LEN][MAX_LEN] = {};
-    int current = 0;
+    char *text2 = (char *)calloc(MAX_LEN, sizeof(char));
+    char* save_text2 = text2;
 
-    while (fgets(text1[current++], MAX_LEN, source) )
+    size_t str_len = 10;
+
+    while (fgets(text2, str_len, source) )
         {
-        continue;
+        text2 += str_len;
         }
 
-    for (size_t i = 0; i < MAX_LEN; ++i)
+
+    for (char *j = save_text2; j < save_text2 + 100; j += str_len)
         {
-        my_puts(text1[i]);
+        my_puts(j);
         }
 
     return 0;

@@ -2,7 +2,7 @@
 #include "set_colour.h"
 
 
-const int MAX_LEN = 10;
+const size_t MAX_LEN = 100;
 
 int my_puts(const char *);
 
