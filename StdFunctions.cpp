@@ -181,6 +181,103 @@ void print_triangle_data(const char*data, size_t rows)
         }
     }
 
+ void bubble_sort(int data[], size_t data_size)
+    {
+    for (size_t nstops = 0; nstops < data_size - 1; nstops++)
+        {
+        bool was_stops = 0;
+        for (size_t current = 0; current < data_size - nstops - 1; current ++)
+            {
+            if (data[current] >= data[current+1])
+                {
+                replace_two_elements(data, current, current+1);
+                was_stops = 1;
+                }
+
+
+            }
+        if (!was_stops)
+            break;
+        }
+    }
+
+void selection_sort(int data[], size_t data_size)
+    {
+
+    for (size_t current = 0; current < data_size -1 ; current ++)
+        {
+        int index = find_min(data + current, data_size - current);
+
+        replace_two_elements(data, current, index + current);
+        }
+    printf("\n");
+    }
+
+int find_min(int data[], size_t data_size)
+    {
+    int min_data = data[0];
+    size_t pos_min = 0;
+    for (size_t current = 1; current < data_size; current++)
+        {
+        if (data[current] <= min_data)
+            {
+            min_data = data[current];
+            pos_min = current;
+            }
+        }
+    return pos_min;
+    }
+
+void replace_two_elements(int data[], int index1, int index2)
+    {
+    int heh = data[index1];
+    data[index1] = data[index2];
+    data[index2] = heh;
+    }
+
+
+
+void quick_sort(int data[], int left, int right)
+    {
+
+    int save_left = left;
+    int save_right = right;
+    int mid = data[left];
+
+
+    while (left != right)
+        {
+
+        while ((data[right] >= mid) && (left < right))
+            right--;
+
+        if (left != right)
+            {
+            data[left] = data[right];
+            left++;
+            }
+
+        while ((data[left] <= mid) && (left < right))
+            left++;
+
+        if (left != right)
+            {
+            data[right] = data[left];
+            right--;
+            }
+        }
+
+    data[left] = mid;
+    mid = left;
+
+    left = save_left;
+    right = save_right;
+
+    if (left < mid)
+        quick_sort(data, left, mid - 1);
+    if (right > mid)
+        quick_sort(data, mid + 1, right);
+}
 
 
 

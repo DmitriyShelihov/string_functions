@@ -7,6 +7,4 @@ const short unsigned int FOREGROUND_GREY = FOREGROUND_BLUE | FOREGROUND_RED | FO
 void set_colour(short unsigned int );
 
 
-
-
 #endif

@@ -51,7 +51,7 @@ int main()
 
     return 0;      */
 
-    FILE *source = fopen("tests.txt", "r");
+    /*FILE *source = fopen("tests.txt", "r");
 
     char * buf = (char *)calloc(BIG_MAX_LEN, sizeof(char));
 
@@ -76,13 +76,40 @@ int main()
             fflush(stdout);
             }
         }
-    free(buf);
+    free(buf); */
+
+    /*FILE *stream = fopen("tests.txt", "r");
+    int nlines = NAN;
+    fscanf(stream, " %d ", &nlines);
+    char ** text4 = {};
+    text4 = (char **)calloc(nlines, sizeof(char*));
+
+    char buf[MAX_LEN] = {};
+    int current = 0;
+
+    while (fgets(buf, BIG_MAX_LEN, stream))
+        {
+        text4[current] = strdup(buf);
+        current++;
+        }
+    for (int i = 0; i < nlines; i++)
+        fputs(text4[i], stdout);
+
+    free(text4);
+    fclose(stream);
+    return 0;*/
+
+    set_colour(FOREGROUND_RED);
+    printf("сегодня 11.09.2023\n\n");
+    set_colour(FOREGROUND_GREY);
 
 
 
+    int mas[11] = {9, 2, 2, 234, 12314, 90, 284, 11, 10, 123};
 
+    quick_sort(mas, 0, 10);
 
-    return 0;
-
+    for (size_t i = 0; i < 11; i++)
+        printf("%d ", mas[i]);
     }
 

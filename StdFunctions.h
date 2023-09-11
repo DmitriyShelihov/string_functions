@@ -41,3 +41,15 @@ void print_triangle_data(const char*, size_t);
 
 
 void print_two_dimensional(const char*[], size_t, size_t) ;
+
+void bubble_sort(int [], size_t );
+
+int find_min(int [], size_t);
+
+void selection_sort(int [], size_t );
+
+void replace_two_elements(int [], int , int );
+
+void quick_sort(int [], int , int );
+
+
